@@ -19,6 +19,9 @@
 
 require 'net/http'
 require 'json'
+require 'open-uri'
+
+
 
 CIRCLE_CI_BASE_URL = 'https://circleci.com/api/v1.1'
 
@@ -41,6 +44,14 @@ STATUS = {
 
 $all_green = true
 $any_running = false
+
+def i_can_haz_internet?
+  begin
+    true if open('https://circleci.com')
+  rescue
+    false
+  end
+end
 
 def api_token
   output = `security find-generic-password -l circle-ci-alfred-token -w`
@@ -139,3 +150,8 @@ puts '---'
 # format_for_bitbar filtered_builds
 format_by_branch builds_by_branch
 
+if i_can_haz_internet?
+  display_recent_builds
+else
+  puts "⏳"
+end

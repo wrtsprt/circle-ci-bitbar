@@ -6,16 +6,7 @@
 # <bitbar.author.github>wrtsprt</bitbar.author.github>
 # <bitbar.desc>Plugin monitoring CircleCI latest builds</bitbar.desc>
 # <bitbar.dependencies>ruby</bitbar.dependencies>
-# <bitbar.abouturl></bitbar.abouturl>
-#
-#
-# This is a small bitbar plugin to monitor the branches on Circle CI. It's pretty much a rip off of
-# https://getbitbar.com/plugins/Dev/CircleCI/circleci-check.5m.py
-#
-# INSTALLATION:
-#
-# Add your Circle CI token to the keychain:
-# `security add-generic-password -a circle-ci-user -s circle-ci-alfred-token -w YOURTOKENHERE`
+# <bitbar.abouturl>https://github.com/wrtsprt/circle-ci-bitbar/blob/master/README.md</bitbar.abouturl>
 
 require 'net/http'
 require 'json'

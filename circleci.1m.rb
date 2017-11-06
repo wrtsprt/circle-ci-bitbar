@@ -95,7 +95,7 @@ def collect_by_branch(buildz)
     unless by_branch.has_key?(branch)
       by_branch[branch] = {'builds' => []}
       by_branch[branch]['status'] = build['status']
-      $all_green = false if build['status'] != 'success'
+      $all_green = false unless %w(success fixed).include? build['status']
       $any_running = true if build['status'] == 'running'
     end
     by_branch[branch]['builds'] << build
@@ -122,7 +122,6 @@ def format_by_branch(buildz_by_branch)
       puts " - #{build['branch']} (#{build['status']}) | size=12 color=#{COLORS[build['status']]} href=#{build['build_url']}"
     end
   end
-
 end
 
 

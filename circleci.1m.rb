@@ -87,7 +87,7 @@ def collect_by_branch(buildz)
       by_branch[branch] = {'builds' => []}
       by_branch[branch]['status'] = build['status']
       $all_green = false unless %w(success fixed).include? build['status']
-      $any_running = true if build['status'] == 'running'
+      $any_running = true if %w{running queued}.include? build['status']
     end
     by_branch[branch]['builds'] << build
   end
